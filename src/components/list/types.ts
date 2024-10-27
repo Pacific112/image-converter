@@ -1,9 +1,8 @@
-type ImageStatus = 'pending' | 'converting' | 'completed' | 'failed'
-
+type ImageStatus = "pending" | "converting" | "completed" | "failed";
 
 export type ImageMetadata = {
-	id: string,
-	url: string
-	name: string
-	status: ImageStatus
-}
+  id: string;
+  url: string;
+  name: string;
+  status: ImageStatus;
+};
