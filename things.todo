@@ -3,11 +3,17 @@
 [ ] Supabase storage - I guess i don't need db?
   - [ ] Serve from CDN
   - [ ] Image optimization?
-[ ] Convert to JPG
-  - [ ] Supabase function to convert from one format to another
-  - [ ] Supabase realtime to live notification about conversion status (maybe I will need db after all)
-  - [ ] Or maybe it's not needed as I can use built in transformation
 [ ] Supabase auth
 [ ] Upload to Drive
 [ ] Release on Vercel
+[ ] Download
+  - [ ] Single file download
+  - [ ] Convert to JPG using URL param
+  - [ ] Multi select for pictures
+  - [ ] Download / share as zip
+[ ] UI enhancements
+  - [ ] Infinite pagination
+  - [ ] Separate images by date
+  - [ ] Quick filters - year / month
+  - [ ] Change title to: Image converter for whoever is logged in
 [ ] converter.koziara.pro - domain
