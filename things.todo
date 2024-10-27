@@ -1,21 +1,31 @@
 [x] Basic UI
 [x] Supabase init
+[ ] Supabase auth
 [ ] Supabase storage - I guess i don't need db?
   - [ ] Serve from CDN
   - [ ] Image optimization?
-[ ] Supabase auth
-[ ] Upload to Drive
-[ ] Release on Vercel
-[ ] Download
+[ ] Download basic
   - [ ] Single file download
   - [ ] Convert to JPG using URL param
+[ ] Release on Vercel
+[ ] Enable React 19 compiler
+[ ] Fix this issue with installing without --force options
+[ ] Auth using Google OAuth
+[ ] Download advanced
   - [ ] Multi select for pictures
   - [ ] Download / share as zip
 [ ] Upload using TUI
+[ ] Use next-typed-actions or something for login
+[ ] Maybe use new Form from Nextjs 15?
+[ ] Upload to Drive
+[ ] Learn
+  - [ ] How Supabase Auth actually works in NextJS as there is A LOT of different conditions and workarounds in order to make it work -> https://supabase.com/docs/guides/auth/server-side/nextjs
 [ ] UI enhancements
   - [ ] Infinite pagination
   - [ ] Separate images by date
   - [ ] Quick filters - year / month
   - [ ] Change title to: Image converter for whoever is logged in
+  - [ ] Avatar name / picture
   - [ ] Dark mode
+  - [ ] Separate login / sign screen or figure it out better
 [ ] converter.koziara.pro - domain
