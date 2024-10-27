@@ -27,7 +27,6 @@ export async function login(formData: FormData) {
 
 export async function signup(formData: FormData) {
   const supabase = await serverClient();
-  console.log(formData);
 
   // type-casting here for convenience
   // in practice, you should validate your inputs
@@ -36,13 +35,16 @@ export async function signup(formData: FormData) {
     password: formData.get("password") as string,
   };
 
-  console.log(data);
+  const response = await supabase.auth.signUp(data);
 
-  const { error } = await supabase.auth.signUp(data);
-  console.log(error);
-
-  if (error) {
+  if (response.error) {
     redirect("/error");
+  }
+
+  console.log(response.data.user);
+  if (response.data.user) {
+    const res = await supabase.storage.createBucket(response.data.user.id);
+    console.log(res);
   }
 
   revalidatePath("/", "layout");

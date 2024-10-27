@@ -1,6 +1,6 @@
 [x] Basic UI
 [x] Supabase init
-[ ] Supabase auth
+[x] Supabase auth
 [ ] Supabase storage - I guess i don't need db?
   - [ ] Serve from CDN
   - [ ] Image optimization?
@@ -8,6 +8,10 @@
   - [ ] Single file download
   - [ ] Convert to JPG using URL param
 [ ] Release on Vercel
+[ ] Option to logout
+[ ] Make sure that user can only create bucket which name is the same as his id
+[ ] Make sure that user has only access to his buckets
+[ ] Is it possible to modify policies via some CLI?
 [ ] Enable React 19 compiler
 [ ] Fix this issue with installing without --force options
 [ ] Auth using Google OAuth

@@ -6,16 +6,16 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ImagesList } from "@/components/list/images-list";
 import { ImageMetadata } from "@/components/list/types";
 import { UploadDropzone } from "@/components/uploader/upload-dropzone";
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || "",
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "",
-);
+import { browserClient } from "@/lib/supabase/browser";
 
 const listImages = async (): Promise<ImageMetadata[]> => {
+  const supabase = browserClient();
+  const response = await supabase.auth.getUser();
+  if (!response.data.user) {
+    throw new Error("User has to be logged in");
+  }
   const uploadedFiles = await supabase.storage
-    .from("test-uploads")
+    .from(response.data.user.id)
     .list("", { limit: 20 });
   if (uploadedFiles.error) {
     throw uploadedFiles.error;
@@ -33,6 +33,7 @@ const listImages = async (): Promise<ImageMetadata[]> => {
 };
 
 export default function UploadCard() {
+  const supabase = browserClient();
   const [images, setImages] = useState<ImageMetadata[]>([]);
   useEffect(() => {
     listImages().then(setImages);
@@ -46,10 +47,14 @@ export default function UploadCard() {
         status: "pending",
         url: URL.createObjectURL(file),
       } satisfies ImageMetadata;
-      supabase.storage
-        .from("test-uploads")
-        .upload(imageMetadata.id, file)
-        .then(() => console.log("done"));
+      supabase.auth.getUser().then((user) => {
+        if (user.data.user) {
+          supabase.storage
+            .from(user.data.user?.id)
+            .upload(imageMetadata.id, file)
+            .then(() => console.log("done"));
+        }
+      });
       return imageMetadata;
     });
     setImages([...images, ...newFiles]);
