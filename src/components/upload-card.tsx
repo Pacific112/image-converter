@@ -7,7 +7,7 @@ import {ImagesList} from "@/components/list/images-list";
 import {ImageMetadata} from "@/components/list/types";
 import {UploadDropzone} from "@/components/uploader/upload-dropzone";
 
-export default function Component() {
+export default function UploadCard() {
 	const [images, setImages] = useState<ImageMetadata[]>([])
 
 	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {

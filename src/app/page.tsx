@@ -1,9 +1,9 @@
-import Component from "@/app/Component";
+import UploadCard from "@/components/upload-card";
 
 export default function Home() {
 	return (
 		<div className="p-4">
-			<Component></Component>
+			<UploadCard></UploadCard>
 		</div>
 	);
 }
