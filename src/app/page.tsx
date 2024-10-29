@@ -1,4 +1,4 @@
-import UploadCard from "@/components/upload-card";
+import MainCard from "@/components/main-card";
 import { serverClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -12,7 +12,7 @@ export default async function Home() {
 
   return (
     <div className="p-4">
-      <UploadCard></UploadCard>
+      <MainCard></MainCard>
     </div>
   );
 }
