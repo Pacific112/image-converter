@@ -3,47 +3,44 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ImageMetadata } from "@/components/list/types";
 import { Uploader } from "@/components/uploader/uploader";
 import { serverClient } from "@/lib/supabase/server";
+import ImageKit from "imagekit";
 
+const imagekit = new ImageKit({
+  publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY!,
+  privateKey: process.env.IMAGEKIT_PRIVATE_KEY!,
+  urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL!,
+});
 const listImages = async (): Promise<ImageMetadata[]> => {
   const supabase = await serverClient();
   const response = await supabase.auth.getUser();
-  if (!response.data.user) {
+  const user = response.data.user;
+  if (!user) {
     throw new Error("User has to be logged in");
   }
-  const uploadedFiles = await supabase.storage
-    .from(response.data.user.id)
-    .list("", { limit: 20 });
-  if (uploadedFiles.error) {
-    throw uploadedFiles.error;
-  }
 
-  const urls = await supabase.storage
-    .from(response.data.user.id)
-    .createSignedUrls(
-      uploadedFiles.data.map((f) => f.name),
-      60,
-    );
-  if (urls.error) {
-    throw urls.error;
-  }
+  const uploadedFiles = await imagekit.listFiles({ tags: user.id, limit: 20 });
 
-  return uploadedFiles.data.map((i) => {
-    if (response.error) {
-      throw response.error;
-    }
+  return Promise.all(
+    uploadedFiles.map(async (file) => {
+      const url = imagekit.url({
+        signed: true,
+        expireSeconds: 3600,
+        path: file.filePath,
+      });
 
-    const u = urls.data.find((u) => u.path === i.name);
-    return {
-      id: i.id,
-      name: i.name,
-      status: "completed",
-      url: u!.signedUrl,
-    };
-  });
+      return {
+        id: file.fileId,
+        name: file.name,
+        status: "completed",
+        url,
+      };
+    }),
+  );
 };
 
 export default async function MainCard() {
   const images = await listImages();
+  const authParams = imagekit.getAuthenticationParameters();
 
   return (
     <Card className="w-full max-w-2xl mx-auto">
@@ -57,7 +54,7 @@ export default async function MainCard() {
         </Avatar>
       </CardHeader>
       <CardContent>
-        <Uploader images={images} />
+        <Uploader images={images} authParams={authParams} />
       </CardContent>
     </Card>
   );

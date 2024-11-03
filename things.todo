@@ -1,15 +1,26 @@
 [x] Basic UI
 [x] Supabase init
 [x] Supabase auth
-[ ] Supabase storage - I guess i don't need db?
+[x] Supabase storage - I guess i don't need db?
+  - [x] not doable - I have to use imagekit or something as transformations are available only for PRO :(
 [ ] Download basic
   - [ ] Single file download
   - [ ] Convert to JPG using URL param
+[ ] Security:
+  - [ ] Make sure that folders are somehow protected and not accessible
+[ ] Optimizations:
+  - [ ] Use queue
+  - [ ] Display loading state when actually loading
+  - [ ] Replace blob with actually imported image URL
 [ ] Release on Vercel
+[ ] Basic Optimizations
+  - [ ] Add Suspense
+  - [ ] Transform images to use lower resolution
 [ ] Option to logout
 [ ] Make sure that user can only create bucket which name is the same as his id
 [ ] Make sure that user has only access to his buckets, can only manage his buckets and his images
 [ ] NextJS Image component and loader
+[ ] Add validation / information about image constraints - formats, size, image, image megapixels for processing
 [ ] Add Sentry
 [ ] Revisit everything that throws an error
 [ ] Is it possible to modify policies via some CLI?
