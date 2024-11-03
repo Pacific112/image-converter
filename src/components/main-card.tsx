@@ -27,12 +27,19 @@ const listImages = async (): Promise<ImageMetadata[]> => {
         expireSeconds: 3600,
         path: file.filePath,
       });
+      const downloadUrl = imagekit.url({
+        signed: true,
+        expireSeconds: 3600,
+        path: file.filePath,
+        transformation: [{ format: "jpg" }],
+      });
 
       return {
         id: file.fileId,
         name: file.name,
         status: "completed",
         url,
+        downloadUrl: `${downloadUrl}&ik-attachment=true`,
       };
     }),
   );

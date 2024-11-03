@@ -6,8 +6,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Check, Image as ImageIcon, Upload, X } from "lucide-react";
-import { Progress } from "@/components/ui/progress";
+import { Check, Download, Image as ImageIcon, Upload, X } from "lucide-react";
 import { ImageMetadata } from "@/components/list/types";
 
 type Props = {
@@ -27,19 +26,31 @@ export const ImageItem = ({ image }: Props) => {
           <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-lg opacity-0 hover:opacity-100 transition-opacity">
             <ImageIcon className="w-8 h-8 text-white" />
           </div>
-          <div className="absolute bottom-2 right-2 p-1 rounded-full bg-white">
-            {image.status === "pending" && (
-              <Upload className="w-4 h-4 text-yellow-500" />
-            )}
-            {/*{image.status === "converting" && (*/}
-            {/*  <Progress value={66} className="w-4 h-4" />*/}
-            {/*)}*/}
+          <div className="absolute bottom-2 right-2 flex gap-2">
             {image.status === "completed" && (
-              <Check className="w-4 h-4 text-green-500" />
+              <a
+                onClick={(e) => e.stopPropagation()}
+                className="p-1 rounded-full bg-white"
+                href={`${image.downloadUrl}`}
+                download
+              >
+                <Download className="w-4 h-4" />
+              </a>
             )}
-            {image.status === "failed" && (
-              <X className="w-4 h-4 text-red-500" />
-            )}
+            <div className="p-1 rounded-full bg-white">
+              {image.status === "pending" && (
+                <Upload className="w-4 h-4 text-yellow-500" />
+              )}
+              {/*{image.status === "converting" && (*/}
+              {/*  <Progress value={66} className="w-4 h-4" />*/}
+              {/*)}*/}
+              {image.status === "completed" && (
+                <Check className="w-4 h-4 text-green-500" />
+              )}
+              {image.status === "failed" && (
+                <X className="w-4 h-4 text-red-500" />
+              )}
+            </div>
           </div>
         </div>
       </DialogTrigger>

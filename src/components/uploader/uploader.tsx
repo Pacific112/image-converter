@@ -70,7 +70,10 @@ export const Uploader = ({
 
           setImages2((i) =>
             i.map((ii) =>
-              ii.id === ff.id ? { ...ff, status: "completed" } : ii,
+              // todo handle this!
+              ii.id === ff.id
+                ? { ...ff, downloadUrl: "", status: "completed" }
+                : ii,
             ),
           );
         } catch (error) {

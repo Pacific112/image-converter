@@ -1,8 +1,25 @@
 type ImageStatus = "pending" | "completed" | "failed";
 
-export type ImageMetadata = {
+type BaseMetadata = {
   id: string;
   url: string;
   name: string;
-  status: ImageStatus;
 };
+
+type PendingMetadata = BaseMetadata & {
+  status: "pending";
+};
+
+type CompletedMetadata = BaseMetadata & {
+  downloadUrl: string;
+  status: "completed";
+};
+
+type FailedMetadata = BaseMetadata & {
+  status: "failed";
+};
+
+export type ImageMetadata =
+  | PendingMetadata
+  | CompletedMetadata
+  | FailedMetadata;
