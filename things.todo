@@ -7,15 +7,19 @@
   - [x] Single file download
   - [x] Convert to JPG using URL param
 [ ] Optimizations:
-  - [ ] Use queue
+  - [x] Use queue
   - [ ] Display loading state when actually loading
-  - [ ] Replace blob with actually imported image URL
-  - [ ] Handle download for completed right after upload (uploader.tsx)
+  - [x] Replace blob with actually imported image URL
+  - [x] Handle download for completed right after upload (uploader.tsx)
+[ ] Make sure api routes require auth
 [ ] Release on Vercel
 [ ] Better code structure
 [ ] Basic Optimizations
   - [ ] Add Suspense
   - [ ] Transform images to use lower resolution
+  - [ ] Use thumbnail
+  - [ ] Set reasonable max number of files
+  - [ ] Make sure that you only upload 5 images at a time
 [ ] Security:
   - [ ] Make sure that folders are somehow protected and not accessible
   - [ ] Option to logout
@@ -29,6 +33,7 @@
 [ ] Enable React 19 compiler
 [ ] Fix this issue with installing without --force options
 [ ] Auth using Google OAuth
+[ ] Move to pnpm
 [ ] Download advanced
   - [ ] Multi select for pictures
   - [ ] Download / share as zip
@@ -39,6 +44,8 @@
 [ ] Upload to Drive
 [ ] Learn
   - [ ] How Supabase Auth actually works in NextJS as there is A LOT of different conditions and workarounds in order to make it work -> https://supabase.com/docs/guides/auth/server-side/nextjs
+[ ] Use those fancy routes for displaying modal with image
+[ ] Keyboard shortcuts
 [ ] UI enhancements
   - [ ] Infinite pagination
   - [ ] Separate images by date
@@ -47,4 +54,6 @@
   - [ ] Avatar name / picture
   - [ ] Dark mode
   - [ ] Separate login / sign screen or figure it out better
+  - [ ] Delete image
+[ ] Try to figure out simple library for typed routes
 [ ] converter.koziara.pro - domain

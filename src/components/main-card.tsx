@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ImageMetadata } from "@/components/list/types";
+import { ImageUploadProgress } from "@/components/list/types";
 import { Uploader } from "@/components/uploader/uploader";
 import { serverClient } from "@/lib/supabase/server";
 import ImageKit from "imagekit";
@@ -10,7 +10,7 @@ const imagekit = new ImageKit({
   privateKey: process.env.IMAGEKIT_PRIVATE_KEY!,
   urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL!,
 });
-const listImages = async (): Promise<ImageMetadata[]> => {
+const listImages = async (): Promise<ImageUploadProgress[]> => {
   const supabase = await serverClient();
   const response = await supabase.auth.getUser();
   const user = response.data.user;
@@ -47,7 +47,6 @@ const listImages = async (): Promise<ImageMetadata[]> => {
 
 export default async function MainCard() {
   const images = await listImages();
-  const authParams = imagekit.getAuthenticationParameters();
 
   return (
     <Card className="w-full max-w-2xl mx-auto">
@@ -61,7 +60,7 @@ export default async function MainCard() {
         </Avatar>
       </CardHeader>
       <CardContent>
-        <Uploader images={images} authParams={authParams} />
+        <Uploader initialImages={images} />
       </CardContent>
     </Card>
   );

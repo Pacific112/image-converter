@@ -1,94 +1,57 @@
 "use client";
 
-import { ImageMetadata } from "@/components/list/types";
+import { ImageUploadProgress } from "@/components/list/types";
 import { UploadDropzone } from "@/components/uploader/upload-dropzone";
 import { ImagesList } from "@/components/list/images-list";
 import { browserClient } from "@/lib/supabase/browser";
-import { useMemo, useState } from "react";
-import ImageKit from "imagekit-javascript";
+import { useState } from "react";
+import { uploadFile } from "@/components/uploader/upload-files";
 
 export const Uploader = ({
-  images,
-  authParams,
+  initialImages,
 }: {
-  images: ImageMetadata[];
-  authParams: { token: string; expire: number; signature: string };
+  initialImages: ImageUploadProgress[];
 }) => {
-  const imageKit = useMemo(
-    () =>
-      new ImageKit({
-        urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL!,
-        publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY!,
-      }),
-    [],
-  );
   const supabase = browserClient();
-  const [images2, setImages2] = useState(images);
+  const [images, setImages] = useState(initialImages);
 
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    const heic2any = (await import("heic2any")).default;
-    const files = Array.from(event.target.files || []);
+    const files = Array.from(event.target.files || []).slice(0, 5);
     const userResponse = await supabase.auth.getUser();
-    const userId = userResponse.data.user?.id;
+    const user = userResponse.data.user;
 
-    if (!userId) return;
+    if (!user) return;
 
-    // Create the optimistic entries first
-    const newFiles = (await Promise.all(
-      files.map(async (file) => {
-        let blob = await heic2any({ blob: file });
-        if (Array.isArray(blob)) {
-          blob = blob[0];
+    const uploadProgresses = files.map(async (file) => {
+      for await (const fileStatusUpdate of uploadFile(file, user)) {
+        switch (fileStatusUpdate.status) {
+          case "pending":
+            setImages((images) => [fileStatusUpdate, ...images]);
+            break;
+          case "failed":
+          case "uploading":
+          case "completed":
+            setImages((images) =>
+              images.map((image) =>
+                image.id === fileStatusUpdate.id
+                  ? { ...image, ...fileStatusUpdate }
+                  : image,
+              ),
+            );
+            break;
         }
+      }
+    });
 
-        return {
-          id: Math.random().toString(36).substr(2, 9),
-          name: file.name,
-          status: "pending",
-          url: URL.createObjectURL(blob),
-        };
-      }),
-    )) satisfies ImageMetadata[];
-
-    setImages2([...newFiles, ...images2]);
-
-    await Promise.all(
-      files.map(async (file, index) => {
-        const ff = newFiles[index];
-        try {
-          await imageKit.upload({
-            file,
-            fileName: ff.name,
-            isPrivateFile: true,
-            token: authParams.token,
-            signature: authParams.signature,
-            expire: authParams.expire,
-            tags: userResponse.data.user?.id,
-          });
-
-          setImages2((i) =>
-            i.map((ii) =>
-              // todo handle this!
-              ii.id === ff.id
-                ? { ...ff, downloadUrl: "", status: "completed" }
-                : ii,
-            ),
-          );
-        } catch (error) {
-          setImages2((i) =>
-            i.map((ii) => (ii.id === ff.id ? { ...ff, status: "failed" } : ii)),
-          );
-        }
-      }),
-    );
+    await Promise.all(uploadProgresses);
   };
 
   return (
     <div className="space-y-4">
       <UploadDropzone onChange={handleFileChange} />
-      {images2.length > 0 && <ImagesList images={images2} />}
+      {images.length > 0 && <ImagesList images={images} />}
     </div>
   );
 };

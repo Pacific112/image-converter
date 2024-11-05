@@ -1,25 +1,27 @@
-type ImageStatus = "pending" | "completed" | "failed";
-
-type BaseMetadata = {
+type BaseProgress = {
   id: string;
-  url: string;
   name: string;
 };
 
-type PendingMetadata = BaseMetadata & {
+type Pending = BaseProgress & {
   status: "pending";
+  url?: string;
 };
 
-type CompletedMetadata = BaseMetadata & {
+type Uploading = BaseProgress & {
+  status: "uploading";
+  url: string;
+};
+
+type Completed = BaseProgress & {
+  url: string;
   downloadUrl: string;
   status: "completed";
 };
 
-type FailedMetadata = BaseMetadata & {
+type Failed = BaseProgress & {
+  url: string;
   status: "failed";
 };
 
-export type ImageMetadata =
-  | PendingMetadata
-  | CompletedMetadata
-  | FailedMetadata;
+export type ImageUploadProgress = Pending | Uploading | Completed | Failed;
