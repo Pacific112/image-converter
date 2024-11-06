@@ -60,7 +60,8 @@ export const ImageItem = ({ image }: Props) => {
                       });
                     }
                   } catch (e) {
-                    console.log(e.name);
+                    const err = e as Error;
+                    console.log(err.name);
                   }
                 }}
                 className="p-1 rounded-full bg-white"
