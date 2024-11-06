@@ -42,7 +42,27 @@ export const ImageItem = ({ image }: Props) => {
           <div className="absolute bottom-2 right-2 flex gap-2">
             {image.status === "completed" && (
               <a
-                onClick={(e) => e.stopPropagation()}
+                onClick={async (e) => {
+                  e.preventDefault();
+                  const res = await fetch(image.downloadUrl);
+                  console.log(res);
+                  const blob = await res.blob();
+                  console.log(blob);
+
+                  const file = new File([blob], "My file", { type: blob.type });
+                  console.log(file);
+                  console.log(navigator.canShare({ files: [file] }));
+                  try {
+                    if (navigator.canShare({ files: [file] })) {
+                      await navigator.share({
+                        text: "Test",
+                        files: [file],
+                      });
+                    }
+                  } catch (e) {
+                    console.log(e.name);
+                  }
+                }}
                 className="p-1 rounded-full bg-white"
                 href={`${image.downloadUrl}`}
                 download
