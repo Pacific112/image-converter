@@ -11,9 +11,12 @@
   - [x] Display loading state when actually loading
   - [x] Replace blob with actually imported image URL
   - [x] Handle download for completed right after upload (uploader.tsx)
-[ ] Make sure api routes require auth
+[x] Make sure api routes require auth
+[ ] Add Sentry
 [ ] Release on Vercel
-[ ] Better code structure
+[ ] Download advanced
+  - [ ] Multi select for pictures
+  - [ ] Download / share as zip
 [ ] Basic Optimizations
   - [ ] Add Suspense
   - [ ] Transform images to use lower resolution
@@ -27,16 +30,11 @@
   - [ ] Make sure that user has only access to his buckets, can only manage his buckets and his images
 [ ] NextJS Image component and loader
 [ ] Add validation / information about image constraints - formats, size, image, image megapixels for processing
-[ ] Add Sentry
 [ ] Revisit everything that throws an error
-[ ] Is it possible to modify policies via some CLI?
 [ ] Enable React 19 compiler
 [ ] Fix this issue with installing without --force options
 [ ] Auth using Google OAuth
 [ ] Move to pnpm
-[ ] Download advanced
-  - [ ] Multi select for pictures
-  - [ ] Download / share as zip
 [ ] Upload using TUI
   - [ ] Some progress would be cool
 [ ] Image optimization?
@@ -57,4 +55,5 @@
   - [ ] Separate login / sign screen or figure it out better
   - [ ] Delete image
 [ ] Try to figure out simple library for typed routes
+[ ] Better code structure
 [ ] converter.koziara.pro - domain
