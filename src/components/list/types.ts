@@ -20,7 +20,7 @@ type Completed = BaseProgress & {
 };
 
 type Failed = BaseProgress & {
-  url: string;
+  url?: string;
   status: "failed";
 };
 

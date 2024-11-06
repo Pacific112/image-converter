@@ -6,9 +6,9 @@
 [x] Download basic
   - [x] Single file download
   - [x] Convert to JPG using URL param
-[ ] Optimizations:
+[x] Optimizations:
   - [x] Use queue
-  - [ ] Display loading state when actually loading
+  - [x] Display loading state when actually loading
   - [x] Replace blob with actually imported image URL
   - [x] Handle download for completed right after upload (uploader.tsx)
 [ ] Make sure api routes require auth
@@ -38,6 +38,7 @@
   - [ ] Multi select for pictures
   - [ ] Download / share as zip
 [ ] Upload using TUI
+  - [ ] Some progress would be cool
 [ ] Image optimization?
 [ ] Use next-typed-actions or something for login
 [ ] Maybe use new Form from Nextjs 15?
