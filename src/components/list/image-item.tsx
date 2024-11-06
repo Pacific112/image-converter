@@ -54,9 +54,6 @@ export const ImageItem = ({ image }: Props) => {
               {image.status === "uploading" && (
                 <Upload className="w-4 h-4 text-yellow-500" />
               )}
-              {/*{image.status === "uploading" && (*/}
-              {/*  <Progress value={66} className="w-4 h-4" />*/}
-              {/*)}*/}
               {image.status === "completed" && (
                 <Check className="w-4 h-4 text-green-500" />
               )}
