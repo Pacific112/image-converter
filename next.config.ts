@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
 };
 
 let config = nextConfig;
-if (process.env.NODE_ENV === "production") {
+if (process.env.TURBOPACK) {
   config = withSentryConfig(nextConfig, {
     // For all available options, see:
     // https://github.com/getsentry/sentry-webpack-plugin#options
