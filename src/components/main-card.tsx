@@ -39,7 +39,7 @@ const listImages = async (): Promise<ImageUploadProgress[]> => {
         name: file.name,
         status: "completed",
         url,
-        downloadUrl: `${downloadUrl}&ik-attachment=true`,
+        downloadUrl,
       };
     }),
   );

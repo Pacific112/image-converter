@@ -8,9 +8,9 @@ import {
 } from "@/components/ui/dialog";
 import {
   Check,
-  Download,
   Image as ImageIcon,
   LoaderIcon,
+  Share,
   Upload,
   X,
 } from "lucide-react";
@@ -41,35 +41,23 @@ export const ImageItem = ({ image }: Props) => {
           )}
           <div className="absolute bottom-2 right-2 flex gap-2">
             {image.status === "completed" && (
-              <a
+              <button
                 onClick={async (e) => {
                   e.preventDefault();
                   const res = await fetch(image.downloadUrl);
-                  console.log(res);
                   const blob = await res.blob();
-                  console.log(blob);
 
-                  const file = new File([blob], "My file", { type: blob.type });
-                  console.log(file);
-                  console.log(navigator.canShare({ files: [file] }));
-                  try {
-                    if (navigator.canShare({ files: [file] })) {
-                      await navigator.share({
-                        text: "Test",
-                        files: [file],
-                      });
-                    }
-                  } catch (e) {
-                    const err = e as Error;
-                    console.log(err.name);
+                  const file = new File([blob], `${image.name}.jpg`, {
+                    type: blob.type,
+                  });
+                  if (navigator.canShare({ files: [file] })) {
+                    await navigator.share({ files: [file] });
                   }
                 }}
                 className="p-1 rounded-full bg-white"
-                href={`${image.downloadUrl}`}
-                download
               >
-                <Download className="w-4 h-4" />
-              </a>
+                <Share className="w-4 h-4" />
+              </button>
             )}
             <div className="p-1 rounded-full bg-white">
               {image.status === "uploading" && (

@@ -40,7 +40,7 @@ export async function* uploadFile(
     const previewUrl = URL.createObjectURL(preview);
     yield { id, status: "uploading", url: previewUrl };
 
-    const res = await imageKitBrowser.upload(file, user, id);
+    const res = await imageKitBrowser.upload(file, user, file.name);
 
     const downloadUrlResponse = await uploadsClient.fetchDownloadUrl(res.name);
     const { downloadUrl } = await downloadUrlResponse.json();
