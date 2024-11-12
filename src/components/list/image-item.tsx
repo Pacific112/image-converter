@@ -8,14 +8,23 @@ import {
 } from "@/components/ui/dialog";
 import { Fullscreen, LoaderIcon, Share, Upload, X } from "lucide-react";
 import { ImageUploadProgress } from "@/components/list/types";
+import { useSelectedFiles } from "@/store/selected-files.store";
 
 type Props = {
   image: ImageUploadProgress;
 };
 
 export const ImageItem = ({ image }: Props) => {
+  const { selectedFiles, toggleFileSelection } = useSelectedFiles();
+
   return (
-    <div className="relative aspect-square flex items-center justify-center">
+    <label className="relative cursor-pointer aspect-square flex items-center justify-center">
+      <input
+        type="checkbox"
+        className="absolute top-2 right-2"
+        checked={selectedFiles.has(image.id)}
+        onChange={() => toggleFileSelection(image.id)}
+      />
       {image.status === "pending" ? (
         <LoaderIcon className="animate-spin" />
       ) : (
@@ -75,6 +84,6 @@ export const ImageItem = ({ image }: Props) => {
           </DialogContent>
         </Dialog>
       </div>
-    </div>
+    </label>
   );
 };

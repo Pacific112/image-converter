@@ -4,6 +4,7 @@ import { ImageUploadProgress } from "@/components/list/types";
 import { Uploader } from "@/components/uploader/uploader";
 import { serverClient } from "@/lib/supabase/server";
 import ImageKit from "imagekit";
+import { Controls } from "@/components/controls";
 
 const imagekit = new ImageKit({
   publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY!,
@@ -62,6 +63,7 @@ export default async function MainCard() {
       <CardContent>
         <Uploader initialImages={images} />
       </CardContent>
+      <Controls />
     </Card>
   );
 }

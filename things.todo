@@ -15,7 +15,7 @@
 [x] Add Sentry
 [x] Release on Vercel
 [ ] Download advanced
-  - [ ] Multi select for pictures
+  - [x] Multi select for pictures
   - [ ] Download / share as zip
 [ ] Basic Optimizations
   - [ ] Add Suspense
@@ -44,10 +44,13 @@
 [ ] Learn
   - [ ] How Supabase Auth actually works in NextJS as there is A LOT of different conditions and workarounds in order to make it work -> https://supabase.com/docs/guides/auth/server-side/nextjs
 [ ] Use those fancy routes for displaying modal with image
+  [ ] More advanced gallery
 [ ] Keyboard shortcuts
+[ ] Should selected files be handled by form instead of zustand?
 [ ] UI enhancements
   - [ ] Infinite pagination
   - [ ] Separate images by date
+  - [ ] Better UI for checkbox
   - [ ] Quick filters - year / month
   - [ ] Change title to: Image converter for whoever is logged in
   - [ ] Avatar name / picture
