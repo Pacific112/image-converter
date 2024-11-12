@@ -1,21 +1,23 @@
 import { create } from "zustand";
+import { Completed } from "@/components/list/types";
 
 type State = {
-  selectedFiles: Set<string>;
+  selectedFiles: Completed[];
   clearSelection: () => void;
-  toggleFileSelection: (id: string) => void;
+  toggleFileSelection: (image: Completed) => void;
 };
 
 export const useSelectedFiles = create<State>((set) => ({
-  selectedFiles: new Set(),
-  clearSelection: () => set(() => ({ selectedFiles: new Set() })),
-  toggleFileSelection: (id) => {
+  selectedFiles: [],
+  clearSelection: () => set(() => ({ selectedFiles: [] })),
+  toggleFileSelection: (image) => {
     set((state) => {
-      const newSelectedFiles = new Set<string>(state.selectedFiles);
-      if (newSelectedFiles.has(id)) {
-        newSelectedFiles.delete(id);
+      const newSelectedFiles = [...state.selectedFiles];
+      const index = newSelectedFiles.findIndex((v) => v.id === image.id);
+      if (index >= 0) {
+        newSelectedFiles.splice(index, 1);
       } else {
-        newSelectedFiles.add(id);
+        newSelectedFiles.push(image);
       }
 
       return {

@@ -16,7 +16,8 @@
 [x] Release on Vercel
 [ ] Download advanced
   - [x] Multi select for pictures
-  - [ ] Download / share as zip
+  - [x] Share as zip
+[ ] prettier dla tailwinda
 [ ] Basic Optimizations
   - [ ] Add Suspense
   - [ ] Transform images to use lower resolution
@@ -59,4 +60,9 @@
   - [ ] Delete image
 [ ] Try to figure out simple library for typed routes
 [ ] Better code structure
+[ ] Allow to download files not only share
+[ ] Replace Promise.all with Promise.allSettled when sharing multiple files
+[ ] Errors:
+  - [ ] What happens when navigator doesnt support share?
+[ ] Is it possible to make controls menu not selectable?
 [ ] converter.koziara.pro - domain

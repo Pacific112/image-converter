@@ -13,7 +13,7 @@ type Uploading = BaseProgress & {
   url: string;
 };
 
-type Completed = BaseProgress & {
+export type Completed = BaseProgress & {
   url: string;
   downloadUrl: string;
   status: "completed";

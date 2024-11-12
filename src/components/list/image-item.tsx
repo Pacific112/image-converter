@@ -19,12 +19,14 @@ export const ImageItem = ({ image }: Props) => {
 
   return (
     <label className="relative cursor-pointer aspect-square flex items-center justify-center">
-      <input
-        type="checkbox"
-        className="absolute top-2 right-2"
-        checked={selectedFiles.has(image.id)}
-        onChange={() => toggleFileSelection(image.id)}
-      />
+      {image.status === "completed" ? (
+        <input
+          type="checkbox"
+          className="absolute top-2 right-2"
+          checked={selectedFiles.some((v) => v.id === image.id)}
+          onChange={() => toggleFileSelection(image)}
+        />
+      ) : null}
       {image.status === "pending" ? (
         <LoaderIcon className="animate-spin" />
       ) : (
@@ -36,25 +38,6 @@ export const ImageItem = ({ image }: Props) => {
       )}
       <div className="absolute top-2 rig"></div>
       <div className="absolute bottom-2 right-2 flex gap-2">
-        {image.status === "completed" && (
-          <button
-            onClick={async (e) => {
-              e.preventDefault();
-              const res = await fetch(image.downloadUrl);
-              const blob = await res.blob();
-
-              const file = new File([blob], `${image.name}.jpg`, {
-                type: blob.type,
-              });
-              if (navigator.canShare({ files: [file] })) {
-                await navigator.share({ files: [file] });
-              }
-            }}
-            className="p-1 rounded-full bg-white"
-          >
-            <Share className="w-4 h-4" />
-          </button>
-        )}
         <Dialog key={image.id}>
           <DialogTrigger asChild>
             <button className="p-1 rounded-full bg-white">
