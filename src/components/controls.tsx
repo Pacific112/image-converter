@@ -23,10 +23,10 @@ export const Controls = () => {
 
   return (
     <div
-      className={`fixed bottom-0 left-0 mx-auto right-0 bg-background max-w-2xl border md:rounded-t-lg border-border transition-transform duration-300 ease-in-out ${selectedFiles.length > 0 ? "translate-y-0" : "translate-y-full"}`}
+      className={`fixed bottom-0 left-0 right-0 mx-auto max-w-2xl border border-border bg-background transition-transform duration-300 ease-in-out md:rounded-t-lg ${selectedFiles.length > 0 ? "translate-y-0" : "translate-y-full"}`}
     >
       <div className="container mx-auto px-4 py-2">
-        <div className="flex justify-between items-center">
+        <div className="flex items-center justify-between">
           <Button
             variant="outline"
             size="sm"

@@ -50,9 +50,9 @@ export default async function MainCard() {
   const images = await listImages();
 
   return (
-    <Card className="w-full max-w-2xl mx-auto">
+    <Card className="mx-auto w-full max-w-2xl">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-xl md:text-2xl font-bold">
+        <CardTitle className="text-xl font-bold md:text-2xl">
           Image Converter for Anastasia
         </CardTitle>
         <Avatar>

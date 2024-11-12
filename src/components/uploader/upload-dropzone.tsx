@@ -6,13 +6,13 @@ export const UploadDropzone = ({
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) => {
   return (
-    <div className="flex items-center justify-center w-full">
+    <div className="flex w-full items-center justify-center">
       <label
         htmlFor="dropzone-file"
-        className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 hover:bg-gray-100"
+        className="dark:hover:bg-bray-800 flex h-32 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed bg-gray-50 hover:bg-gray-100"
       >
-        <div className="flex flex-col items-center justify-center pt-5 pb-6">
-          <Upload className="w-6 h-6 mb-2 text-gray-400" />
+        <div className="flex flex-col items-center justify-center pb-6 pt-5">
+          <Upload className="mb-2 h-6 w-6 text-gray-400" />
           <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
             <span className="font-semibold">Click to upload</span> or drag and
             drop

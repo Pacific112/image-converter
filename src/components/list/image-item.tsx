@@ -18,11 +18,11 @@ export const ImageItem = ({ image }: Props) => {
   const { selectedFiles, toggleFileSelection } = useSelectedFiles();
 
   return (
-    <label className="relative cursor-pointer aspect-square flex items-center justify-center">
+    <label className="relative flex aspect-square cursor-pointer items-center justify-center">
       {image.status === "completed" ? (
         <input
           type="checkbox"
-          className="absolute top-2 right-2"
+          className="absolute right-2 top-2"
           checked={selectedFiles.some((v) => v.id === image.id)}
           onChange={() => toggleFileSelection(image)}
         />
@@ -33,22 +33,22 @@ export const ImageItem = ({ image }: Props) => {
         <img
           src={image.url}
           alt={image.name}
-          className="object-cover w-full h-full rounded-lg"
+          className="h-full w-full rounded-lg object-cover"
         />
       )}
-      <div className="absolute top-2 rig"></div>
+      <div className="rig absolute top-2"></div>
       <div className="absolute bottom-2 right-2 flex gap-2">
         <Dialog key={image.id}>
           <DialogTrigger asChild>
-            <button className="p-1 rounded-full bg-white">
+            <button className="rounded-full bg-white p-1">
               {image.status === "uploading" && (
-                <Upload className="w-4 h-4 text-yellow-500" />
+                <Upload className="h-4 w-4 text-yellow-500" />
               )}
               {image.status === "completed" && (
-                <Fullscreen className="w-4 h-4" />
+                <Fullscreen className="h-4 w-4" />
               )}
               {image.status === "failed" && (
-                <X className="w-4 h-4 text-red-500" />
+                <X className="h-4 w-4 text-red-500" />
               )}
             </button>
           </DialogTrigger>

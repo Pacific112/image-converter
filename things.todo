@@ -14,10 +14,10 @@
 [x] Make sure api routes require auth
 [x] Add Sentry
 [x] Release on Vercel
-[ ] Download advanced
+[x] Download advanced
   - [x] Multi select for pictures
   - [x] Share as zip
-[ ] prettier dla tailwinda
+[x] prettier dla tailwinda
 [ ] Basic Optimizations
   - [ ] Add Suspense
   - [ ] Transform images to use lower resolution
