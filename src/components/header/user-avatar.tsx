@@ -23,7 +23,10 @@ export const UserAvatar = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-40">
         <DropdownMenuItem
-          onClick={() => supabase.auth.signOut()}
+          onClick={async () => {
+            await supabase.auth.signOut();
+            window.location.reload();
+          }}
           className="text-destructive"
         >
           <LogOut className="mr-2 h-4 w-4" />
