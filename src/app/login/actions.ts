@@ -41,12 +41,6 @@ export async function signup(formData: FormData) {
     redirect("/error");
   }
 
-  console.log(response.data.user);
-  if (response.data.user) {
-    const res = await supabase.storage.createBucket(response.data.user.id);
-    console.log(res);
-  }
-
   revalidatePath("/", "layout");
   redirect("/");
 }

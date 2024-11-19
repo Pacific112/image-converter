@@ -18,6 +18,7 @@
   - [x] Multi select for pictures
   - [x] Share as zip
 [x] prettier dla tailwinda
+[ ] Auth using Google OAuth
 [ ] Basic Optimizations
   - [ ] Add Suspense
   - [ ] Transform images to use lower resolution
@@ -34,14 +35,12 @@
 [ ] Revisit everything that throws an error
 [ ] Enable React 19 compiler
 [x] Fix this issue with installing without --force options
-[ ] Auth using Google OAuth
 [x] Move to pnpm
 [ ] Upload using TUI
   - [ ] Some progress would be cool
 [ ] Image optimization?
 [ ] Use next-typed-actions or something for login
 [ ] Maybe use new Form from Nextjs 15?
-[ ] Upload to Drive
 [ ] Learn
   - [ ] How Supabase Auth actually works in NextJS as there is A LOT of different conditions and workarounds in order to make it work -> https://supabase.com/docs/guides/auth/server-side/nextjs
 [ ] Use those fancy routes for displaying modal with image

@@ -1,10 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ImageUploadProgress } from "@/components/list/types";
 import { Uploader } from "@/components/uploader/uploader";
 import { serverClient } from "@/lib/supabase/server";
 import ImageKit from "imagekit";
 import { Controls } from "@/components/controls";
+import { UserAvatar } from "@/components/header/user-avatar";
 
 const imagekit = new ImageKit({
   publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY!,
@@ -55,10 +55,7 @@ export default async function MainCard() {
         <CardTitle className="text-xl font-bold md:text-2xl">
           Image Converter for Anastasia
         </CardTitle>
-        <Avatar>
-          <AvatarImage src="/placeholder-avatar.jpg" alt="User" />
-          <AvatarFallback>U</AvatarFallback>
-        </Avatar>
+        <UserAvatar />
       </CardHeader>
       <CardContent>
         <Uploader initialImages={images} />
