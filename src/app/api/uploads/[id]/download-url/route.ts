@@ -24,7 +24,7 @@ export async function GET(
   const downloadUrl = imagekit.url({
     signed: true,
     expireSeconds: 3600,
-    path: id,
+    path: `${user.id}/${id}`,
     transformation: [{ format: "jpg" }],
   });
 

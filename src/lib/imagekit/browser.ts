@@ -17,7 +17,7 @@ const upload = async (file: File, user: User, name: string) => {
     token: authParams.token,
     signature: authParams.signature,
     expire: authParams.expire,
-    tags: user.id,
+    folder: user.id,
   });
 };
 

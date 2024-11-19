@@ -18,20 +18,32 @@
   - [x] Multi select for pictures
   - [x] Share as zip
 [x] prettier dla tailwinda
-[ ] Auth using Google OAuth
+[x] Auth using Google OAuth
+[x] Security:
+  - [x] Make sure that folders are somehow protected and not accessible
+  - [x] Option to logout
+  - [s] Make sure that user can only create bucket which name is the same as his id
+  - [s] Make sure that user has only access to his buckets, can only manage his buckets and his images
 [ ] Basic Optimizations
   - [ ] Add Suspense
   - [ ] Transform images to use lower resolution
   - [ ] Use thumbnail
   - [ ] Set reasonable max number of files
   - [ ] Make sure that you only upload 5 images at a time
-[ ] Security:
-  - [ ] Make sure that folders are somehow protected and not accessible
-  - [ ] Option to logout
-  - [ ] Make sure that user can only create bucket which name is the same as his id
-  - [ ] Make sure that user has only access to his buckets, can only manage his buckets and his images
-[ ] NextJS Image component and loader
-[ ] Add validation / information about image constraints - formats, size, image, image megapixels for processing
+  - [ ] Add validation / information about image constraints - formats, size, image, image megapixels for processing
+  - [ ] NextJS Image component and loader
+[ ] UI enhancements
+  - [ ] Infinite pagination
+  - [ ] Separate images by date
+  - [ ] Better UI for checkbox
+  - [ ] Quick filters - year / month
+  - [ ] Change title to: Image converter for whoever is logged in
+  - [ ] Avatar name / picture
+  - [ ] Dark mode
+  - [ ] Loaders for for login / upload / others
+  - [ ] Separate login / sign screen or figure it out better
+  - [ ] Delete image
+[ ] Try to figure out simple library for typed routes
 [ ] Revisit everything that throws an error
 [ ] Enable React 19 compiler
 [x] Fix this issue with installing without --force options
@@ -47,17 +59,6 @@
   [ ] More advanced gallery
 [ ] Keyboard shortcuts
 [ ] Should selected files be handled by form instead of zustand?
-[ ] UI enhancements
-  - [ ] Infinite pagination
-  - [ ] Separate images by date
-  - [ ] Better UI for checkbox
-  - [ ] Quick filters - year / month
-  - [ ] Change title to: Image converter for whoever is logged in
-  - [ ] Avatar name / picture
-  - [ ] Dark mode
-  - [ ] Separate login / sign screen or figure it out better
-  - [ ] Delete image
-[ ] Try to figure out simple library for typed routes
 [ ] Better code structure
 [ ] Allow to download files not only share
 [ ] Replace Promise.all with Promise.allSettled when sharing multiple files

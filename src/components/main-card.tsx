@@ -19,7 +19,7 @@ const listImages = async (): Promise<ImageUploadProgress[]> => {
     throw new Error("User has to be logged in");
   }
 
-  const uploadedFiles = await imagekit.listFiles({ tags: user.id, limit: 20 });
+  const uploadedFiles = await imagekit.listFiles({ path: user.id, limit: 20 });
 
   return Promise.all(
     uploadedFiles.map(async (file) => {
