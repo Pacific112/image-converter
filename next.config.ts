@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
 };
 
 let config = nextConfig;
-if (process.env.TURBOPACK) {
+if (!process.env.TURBOPACK) {
   config = withSentryConfig(nextConfig, {
     // For all available options, see:
     // https://github.com/getsentry/sentry-webpack-plugin#options
@@ -42,5 +42,21 @@ if (process.env.TURBOPACK) {
     automaticVercelMonitors: true,
   });
 }
+
+const consoleWarn = console.warn;
+
+console.warn = (...args) => {
+  // Force to disable serverExternalPackages warnings: https://github.com/vercel/next.js/issues/68805
+  if (
+    typeof args[1] === "string" &&
+    args[1].includes(
+      "Packages that should be external need to be installed in the project directory, so they can be resolved from the output files.\nTry to install it into the project directory by running",
+    )
+  ) {
+    return;
+  }
+
+  consoleWarn(...args);
+};
 
 export default config;
