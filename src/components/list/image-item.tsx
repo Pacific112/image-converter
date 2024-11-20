@@ -6,7 +6,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Fullscreen, LoaderIcon, Share, Upload, X } from "lucide-react";
+import { Fullscreen, LoaderIcon, Upload, X } from "lucide-react";
 import { ImageUploadProgress } from "@/components/list/types";
 import { useSelectedFiles } from "@/store/selected-files.store";
 

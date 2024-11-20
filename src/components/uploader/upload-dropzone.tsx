@@ -18,7 +18,7 @@ export const UploadDropzone = ({
             drop
           </p>
           <p className="text-xs text-gray-500 dark:text-gray-400">
-            HEIF images (MAX. 800x400px)
+            HEIC images
           </p>
         </div>
         <input
