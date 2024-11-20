@@ -8,6 +8,7 @@ import { useState } from "react";
 import { uploadFile } from "@/components/uploader/upload-files";
 import pLimit from "p-limit";
 
+const MAX_NUMBER_OF_FILES = 20;
 const limit = pLimit(5);
 
 export const Uploader = ({
@@ -21,7 +22,10 @@ export const Uploader = ({
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    const files = Array.from(event.target.files || []).slice(0, 5);
+    const files = Array.from(event.target.files || []).slice(
+      0,
+      MAX_NUMBER_OF_FILES,
+    );
     const userResponse = await supabase.auth.getUser();
     const user = userResponse.data.user;
 

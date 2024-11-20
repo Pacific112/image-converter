@@ -64,8 +64,12 @@
 [ ] Learn
   - [ ] How Supabase Auth actually works in NextJS as there is A LOT of different conditions and workarounds in order to make it work -> https://supabase.com/docs/guides/auth/server-side/nextjs
 [ ] Use those fancy routes for displaying modal with image
-  [ ] More advanced gallery
+  - [ ] More advanced gallery
 [ ] Keyboard shortcuts
+[ ] Support for more image types:
+  - [ ] jpg
+  - [ ] png
+[ ] Some validation of image size - should be accepted, pending and rejected. Maybe similar treatment should be made for files above 20 as well. Or maybe I don't want to limit this? Why would I actually?
 [ ] Should selected files be handled by form instead of zustand?
 [ ] Allow to download files not only share
 [ ] Replace Promise.all with Promise.allSettled when sharing multiple files

@@ -17,15 +17,24 @@ export const UploadDropzone = ({
             <span className="font-semibold">Click to upload</span> or drag and
             drop
           </p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">
-            HEIC images
-          </p>
+          <ul className="text-center text-xs text-gray-500 dark:text-gray-400">
+            <li>
+              <strong>HEIC</strong> images only
+            </li>
+            <li>
+              Up to <strong>20 files</strong> can be uploaded at once
+            </li>
+            <li>
+              Each file must be less than <strong>20MB</strong>
+            </li>
+          </ul>
         </div>
         <input
           id="dropzone-file"
           type="file"
           className="hidden"
           onChange={onChange}
+          accept="image/heic"
           multiple
         />
       </label>
