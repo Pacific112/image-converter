@@ -24,13 +24,18 @@
   - [x] Option to logout
   - [s] Make sure that user can only create bucket which name is the same as his id
   - [s] Make sure that user has only access to his buckets, can only manage his buckets and his images
-[ ] Basic Optimizations
+[x] Basic Optimizations
   - [x] Transform images to use lower resolution
   - [x] Use thumbnail
-  - [ ] Set reasonable max number of files
+  - [x] Set reasonable max number of files
   - [x] Make sure that you only upload 5 images at a time
-  - [ ] Add validation / information about image constraints - formats, size, image, image megapixels for processing
-[ ] Release on Vercel
+  - [x] Add validation / information about image constraints - formats, size, image, image megapixels for processing
+[x] Release on Vercel
+[x] converter.mkoziara.com - domain
+[x] Basic meta
+    - title
+    - description
+    - favicon
 [ ] UI enhancements
   - [ ] Better UI for checkbox
   - [ ] Change title to: Image converter for whoever is logged in
@@ -76,4 +81,3 @@
 [ ] Errors:
   - [ ] What happens when navigator doesnt support share?
 [ ] Is it possible to make controls menu not selectable?
-[ ] converter.koziara.pro - domain
