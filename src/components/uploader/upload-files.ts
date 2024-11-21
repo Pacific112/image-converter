@@ -1,6 +1,7 @@
 import { User } from "@supabase/auth-js";
 import { uploadsClient } from "@/app/api/uploads/uploads-client";
 import { imageKitBrowser } from "@/lib/imagekit/browser";
+import { captureException } from "@sentry/core";
 
 const generatePreview = async (file: File) => {
   const heic2any = (await import("heic2any")).default;
@@ -45,7 +46,8 @@ export async function* uploadFile(
     const downloadUrlResponse = await uploadsClient.fetchDownloadUrl(res.name);
     const { downloadUrl } = await downloadUrlResponse.json();
     yield { id, status: "completed", url: previewUrl, downloadUrl };
-  } catch {
+  } catch (e) {
+    captureException(e);
     yield { id, status: "failed" };
   }
 }
