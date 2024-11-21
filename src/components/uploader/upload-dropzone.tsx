@@ -19,9 +19,6 @@ export const UploadDropzone = ({
           </p>
           <ul className="text-center text-xs text-gray-500 dark:text-gray-400">
             <li>
-              <strong>HEIC</strong> images only
-            </li>
-            <li>
               Up to <strong>20 files</strong> can be uploaded at once
             </li>
             <li>
@@ -34,7 +31,7 @@ export const UploadDropzone = ({
           type="file"
           className="hidden"
           onChange={onChange}
-          accept="image/heic"
+          accept="image/*,image/heic"
           multiple
         />
       </label>

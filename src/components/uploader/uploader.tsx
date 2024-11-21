@@ -22,6 +22,7 @@ export const Uploader = ({
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
+    event.preventDefault();
     const files = Array.from(event.target.files || []).slice(
       0,
       MAX_NUMBER_OF_FILES,
