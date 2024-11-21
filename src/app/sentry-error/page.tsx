@@ -1,5 +1,3 @@
-"use client";
-
 export default async function SentryError() {
   return (
     <button
