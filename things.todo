@@ -71,6 +71,7 @@
 [ ] Use those fancy routes for displaying modal with image
   - [ ] More advanced gallery
 [ ] Keyboard shortcuts
+[ ] Error state for image during upload
 [x] Support for more image types:
 [ ] Some validation of image size - should be accepted, pending and rejected. Maybe similar treatment should be made for files above 20 as well. Or maybe I don't want to limit this? Why would I actually?
 [ ] Should selected files be handled by form instead of zustand?

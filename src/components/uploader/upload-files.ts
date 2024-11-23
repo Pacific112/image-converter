@@ -3,7 +3,16 @@ import { uploadsClient } from "@/app/api/uploads/uploads-client";
 import { imageKitBrowser } from "@/lib/imagekit/browser";
 import { captureException } from "@sentry/nextjs";
 
+function isSafari() {
+  // Feature detection for Safari-specific behavior
+  return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+}
+
 const generatePreview = async (file: File) => {
+  if (isSafari()) {
+    console.log("is safari");
+    return URL.createObjectURL(file);
+  }
   if (file.type !== "image/heic" && file.type !== "image/heif") {
     return URL.createObjectURL(file);
   }
