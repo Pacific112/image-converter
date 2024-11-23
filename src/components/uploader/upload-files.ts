@@ -51,6 +51,7 @@ export async function* uploadFile(
     yield { id, status: "completed", url: previewUrl, downloadUrl };
   } catch (e) {
     captureException(e);
+    console.log(e);
     yield { id, status: "failed" };
   }
 }
