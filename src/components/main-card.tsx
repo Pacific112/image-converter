@@ -22,6 +22,7 @@ const listImages = async (): Promise<ImageUploadProgress[]> => {
   const uploadedFiles = await imagekit.listFiles({
     path: `${user.id}/`,
     limit: 20,
+    sort: "DESC_CREATED",
   });
 
   return Promise.all(

@@ -46,6 +46,7 @@
   - [ ] Handle 404
   - [ ] Add some border for pending state
   - [ ] Show pending state for ALL images. Right now you don't know how many you are uploading
+  - [ ] Close bottom bar after done
 [ ] Try to figure out simple library for typed routes
 [ ] Revisit everything that throws an error
 [ ] Enable React 19 compiler
